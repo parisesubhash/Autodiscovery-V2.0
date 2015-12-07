@@ -33,7 +33,9 @@ Vagrant.configure(2) do |config|
 	jen.vm.box = "jenkins"
 	jen.vm.network "private_network", ip: "192.168.10.11"
 	jen.vm.box = "D:/Users/hemags/Desktop/setup_files/centos64-x86_64-20140116.box"
+	jen.vm.synced_folder "D:/Users/hemags/Desktop/PROJECTS/Auto-Discovery Tool/Version-2.0/python", "/vagrant_data/"
     jen.vm.provision "shell", inline: <<-SHELL
+		sudo cp -R /vagrant_data/* /home/vagrant/*
 		sudo yum install -y java-1.7.0-openjdk
 		sudo yum install -y wget
 		sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
